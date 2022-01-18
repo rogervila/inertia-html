@@ -1,0 +1,30 @@
+{
+    "name": "@rogervila/inertia-html",
+    "version": "0.0.1",
+    "license": "MIT",
+    "description": "The plain HTML adapter for Inertia.js",
+    "contributors": [
+        "Roger Vilà <rogervila@me.com>"
+    ],
+    "homepage": "https://rogervila.es/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rogervila/inertia-html.git",
+        "directory": "packages/html"
+    },
+    "bugs": {
+        "url": "https://github.com/rogervila/inertia-html/issues"
+    },
+    "keywords": [
+        "inertiajs html",
+        "inertiajs jquery",
+        "inertiajs alpinejs"
+    ],
+    "main": "src/index.js",
+    "devDependencies": {
+        "@inertiajs/inertia": "^0.11.0"
+    },
+    "peerDependencies": {
+        "@inertiajs/inertia": "^0.11.0"
+    }
+}

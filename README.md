@@ -4,9 +4,7 @@
 [![Npm package total downloads](https://badgen.net/npm/dt/inertia-html)](https://npmjs.com/package/inertia-html)
 [![GitHub license](https://badgen.net/github/license/rogervila/inertia-html)](https://github.com/rogervila/inertia-html/blob/main/LICENSE)
 
-<center>
-<img src="https://i.ibb.co/Jyf7N95/inertia-html.png" alt="https://github.com/rogervila/inertia-html" loading="lazy" />
-</center>
+<p align="center"><img src="https://i.ibb.co/Jyf7N95/inertia-html.png" alt="https://github.com/rogervila/inertia-html" loading="lazy" /></p>
 
 Inertia.js HTML Adapter renders plain HTML files, including its script tags.
 

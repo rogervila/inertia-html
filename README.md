@@ -6,9 +6,9 @@
 [![Npm package total downloads](https://badgen.net/npm/dt/inertia-html)](https://npmjs.com/package/inertia-html)
 [![GitHub license](https://badgen.net/github/license/rogervila/inertia-html)](https://github.com/rogervila/inertia-html/blob/main/LICENSE)
 
-Inertia.js HTML Adapter renders plain HTML files, including its script tags.
+**Inertia.js HTML Adapter** renders plain HTML files, including its script tags.
 
-This strategy allows you to use any frontend library or framework the same way you would do in traditional server rendered HTML views.
+This strategy **allows you to use any frontend library or framework** the same way you would do in traditional server rendered HTML views.
 
 > Check the Examples section to see how to use popular frontend libraries like jQuery and Alpine.js
 
@@ -16,7 +16,7 @@ This strategy allows you to use any frontend library or framework the same way y
 
 > This section is based on [Laravel server-side](https://inertiajs.com/server-side-setup) adapter.
 
-First, install the adapter with NPM or Yarn
+First, install the adapter with **NPM or Yarn**
 
 ```sh
 npm install @inertiajs/inertia inertia-html
@@ -40,13 +40,13 @@ createInertiaApp({
 
 ## Usage
 
-Inertia HTML adapter behaves like the [Inertia official client adapters](https://inertiajs.com/client-side-setup)
+**Inertia HTML Adapter** behaves like the [Inertia official client adapters](https://inertiajs.com/client-side-setup)
 
 > This section is based on [Laravel server-side](https://inertiajs.com/server-side-setup) adapter.
 
 ### Pages
 
-Let's create a Welcome Page on the `resources/js/Pages/Welcome.html` path:
+Let's create a **Welcome Page** on the `resources/js/Pages/Welcome.html` path:
 
 ```html
 <!-- resources/js/Pages/Welcome.html -->
@@ -73,7 +73,7 @@ Let's create a Welcome Page on the `resources/js/Pages/Welcome.html` path:
 
 ```
 
-Now, add a route that renders the `Welcome.html` page with inertia:
+Now, **add a route** that renders the `Welcome.html` page with Inertia:
 
 ```php
 <?php
@@ -88,11 +88,11 @@ Route::get('/', function () {
 });
 ```
 
-Done. You are now rendering plain HTML files with Inertia.
+Done. **You are now rendering plain HTML files with Inertia**.
 
 ### Links
 
-Any tag that contains a `[data-inertia-link]` attribute will be considered as a _link_, and will be redirected to its _href_ when it recieves a click event.
+**Any tag that contains a `[data-inertia-link]` attribute will be considered as a _link_**, and will be redirected to its _href_ when it recieves a click event.
 
 Let's add some links on the previously created `Welcome.html` page:
 
@@ -152,7 +152,7 @@ Route::get('/about', function () {
 });
 ```
 
-Links accept a JSON string where you can pass any parameter that you could pass to the `Inertia.visit()`, like the HTTP method.
+**Links accept a JSON string** where **you can pass any parameter** that you could pass to the `Inertia.visit()`, like the HTTP method.
 
 > Check [Inertia.js Manual Visits section](https://inertiajs.com/manual-visits) for further information.
 
@@ -162,7 +162,7 @@ Links accept a JSON string where you can pass any parameter that you could pass 
 
 As an example, let's do a POST request.
 
-First, add a POST route on `routes/web.php` that logs a message and then redirects back.
+First, **add a POST route** on `routes/web.php` that logs a message and then redirects back.
 
 ```php
 /* routes/web.php */
@@ -175,7 +175,7 @@ Route::post('/message', function () {
 });
 ```
 
-Now, on the `Welcome.html` page, let's add a button that just sends the post request.
+Now, on the `Welcome.html` page, let's **add a button to send a post request to the previously created route**.
 
 ```html
 <!-- resources/js/Pages/Welcome.html -->
@@ -193,13 +193,13 @@ Now, on the `Welcome.html` page, let's add a button that just sends the post req
 <!-- ... -->
 ```
 
-Notice that the "rendered at" date changes when the POST request is sent. This is because Inerta renders again the current page.
+Notice that the "rendered at" date changes when the POST request is sent. This is because Inerta renders again the current page after the redirection.
 
 Also, check your Laravel logs to assert that the message has been logged.
 
 ## Examples
 
-Since Inertia.js HTML Adapter renders plain HTML files, you can use _any_ frontend library or framework with it.
+Since **Inertia.js HTML Adapter renders plain HTML files**, you can **use _any_ frontend library or framework with it**.
 
 > To simplify the examples, external libraries are loaded via CDN.
 
@@ -209,7 +209,7 @@ Since Inertia.js HTML Adapter renders plain HTML files, you can use _any_ fronte
 
 [Alpine.js](https://alpinejs.dev/) is a lightweight JavaScript framework created by @calebporzio, who also created [Laravel Livewire](https://laravel-livewire.com/)
 
-In order to use it with Inertia, add the script on the head tag of `resources/views/app.blade.php`
+In order to use it with Inertia, **add the script on the head tag** of `resources/views/app.blade.php`
 
 ```html
 <!-- resources/views/app.blade.php -->
@@ -226,7 +226,7 @@ In order to use it with Inertia, add the script on the head tag of `resources/vi
 </html>
 ```
 
-Now, modify the `Welcome.html` page to use Alpine.js instead of plain javascript.
+Now, **modify the `Welcome.html` page** to use Alpine.js instead of plain javascript.
 
 ```html
 <!-- resources/js/Pages/Welcome.html -->
@@ -254,7 +254,7 @@ Now, modify the `Welcome.html` page to use Alpine.js instead of plain javascript
 
 Old but gold, [jQuery](https://code.jquery.com/) is still an option for those who have not been on the frontend development loop during the last years.
 
-Add the jQuery script on the head tag of `resources/views/app.blade.php`
+**Add the jQuery script on the head tag** of `resources/views/app.blade.php`
 
 ```html
 <!-- resources/views/app.blade.php -->
@@ -274,7 +274,7 @@ Add the jQuery script on the head tag of `resources/views/app.blade.php`
 </html>
 ```
 
-Now, modify the `Welcome.html` page to use jQuery instead of plain javascript.
+Now, **modify the `Welcome.html` page** to use jQuery instead of plain javascript.
 
 ```html
 <!-- resources/js/Pages/Welcome.html -->

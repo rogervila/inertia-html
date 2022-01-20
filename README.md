@@ -66,7 +66,18 @@ Let's create a **Welcome Page** on the `resources/js/Pages/Welcome.html` path:
      * ie: for "Welcome.html", it will try to run "Welcome()"
      */
     function Welcome() {
-        console.log('Welcome!')
+        /**
+         * The Inertia object can be accessed globally.
+         * It contains the current page data and methods
+         * for manual visits, among other features.
+         *
+         * Example: console.log(Inertia.page.props.foo)
+         *
+         * @link https://inertiajs.com/manual-visits
+         */
+        console.log({ Inertia })
+
+        /* Let's append the current page render timestamp */
         document.querySelector('#date').innerText = new Date().toTimeString()
     }
 </script>
@@ -129,7 +140,7 @@ Also, create the `About.html` page and add it to the routes file:
 
 <script>
     function About() {
-        console.log('About!')
+        console.log({Inertia})
         document.querySelector('#date').innerText = new Date().toTimeString()
     }
 </script>
@@ -197,6 +208,36 @@ Notice that the "rendered at" date changes when the POST request is sent. This i
 
 Also, check your Laravel logs to assert that the message has been logged.
 
+### Head
+
+> Check the [Inertia.js title & meta section](https://inertiajs.com/title-and-meta#head-component).
+
+The **Inertia HTML Adapter offers a global `Head()` method** that accepts an HTML string that is placed on the `<head>`.
+
+It can be used to change the `<title>` and other metatags.
+
+```html
+<!-- resources/js/Pages/Welcome.html -->
+
+<!-- ... -->
+<h1>Welcome</h1>
+
+<!-- ... -->
+
+<script>
+    /* ... */
+    function Welcome() {
+        /* ... */
+        Head(`
+            <title>Welcome</title>
+            <meta name="description" content="The Welcome page description" />
+        `)
+    }
+</script>
+
+```
+
+
 ## Examples
 
 Since **Inertia.js HTML Adapter renders plain HTML files**, you can **use _any_ frontend library or framework with it**.
@@ -238,7 +279,7 @@ Now, **modify the `Welcome.html` page** to use Alpine.js instead of plain javasc
 <script>
     /** The Welcome function can be deleted if you want **/
     function Welcome() {
-        console.log('Welcome!')
+        /* ... */
     }
 
     function Footer() {
@@ -286,7 +327,7 @@ Now, **modify the `Welcome.html` page** to use jQuery instead of plain javascrip
 <script>
     /* ... */
     function Welcome() {
-        console.log('Welcome!')
+        console.log({Inertia})
         $('#date').html(new Date().toTimeString())
     }
 </script>

@@ -66,7 +66,18 @@ Let's create a **Welcome Page** on the `resources/js/Pages/Welcome.html` path:
      * ie: for "Welcome.html", it will try to run "Welcome()"
      */
     function Welcome() {
-        console.log('Welcome!')
+        /**
+         * The Inertia object can be accessed globally.
+         * It contains the current page data and methods
+         * for manual visits, among other features.
+         *
+         * Example: console.log(Inertia.page.props.foo)
+         *
+         * @link https://inertiajs.com/manual-visits
+         */
+        console.log({ Inertia })
+
+        /* Let's append the current page render timestamp */
         document.querySelector('#date').innerText = new Date().toTimeString()
     }
 </script>
@@ -129,7 +140,7 @@ Also, create the `About.html` page and add it to the routes file:
 
 <script>
     function About() {
-        console.log('About!')
+        console.log({Inertia})
         document.querySelector('#date').innerText = new Date().toTimeString()
     }
 </script>
@@ -268,7 +279,7 @@ Now, **modify the `Welcome.html` page** to use Alpine.js instead of plain javasc
 <script>
     /** The Welcome function can be deleted if you want **/
     function Welcome() {
-        console.log('Welcome!')
+        /* ... */
     }
 
     function Footer() {
@@ -316,7 +327,7 @@ Now, **modify the `Welcome.html` page** to use jQuery instead of plain javascrip
 <script>
     /* ... */
     function Welcome() {
-        console.log('Welcome!')
+        console.log({Inertia})
         $('#date').html(new Date().toTimeString())
     }
 </script>

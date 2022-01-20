@@ -8,15 +8,15 @@
 
 **Inertia.js HTML Adapter** renders plain HTML files, including its script tags.
 
-This strategy **allows you to use any frontend library or framework** the same way you would do in traditional server rendered HTML views.
+This strategy **allows you to use any frontend library or framework or avoid JS completely**, the same way you would do in traditional server rendered HTML views.
 
-> Check the Examples section to see how to use popular frontend libraries like jQuery and Alpine.js
+> Check the Examples section to see how to use popular frontend libraries like jQuery and Alpine.js.
 
 ## Install
 
 > This section is based on [Laravel server-side](https://inertiajs.com/server-side-setup) adapter.
 
-First, install the adapter with **NPM or Yarn**
+First, install the adapter with **NPM or Yarn**.
 
 ```sh
 npm install @inertiajs/inertia inertia-html
@@ -40,13 +40,13 @@ createInertiaApp({
 
 ## Usage
 
-**Inertia HTML Adapter** behaves like the [Inertia official client adapters](https://inertiajs.com/client-side-setup)
+**Inertia HTML Adapter** behaves like the [Inertia official client adapters](https://inertiajs.com/client-side-setup).
 
 > This section is based on [Laravel server-side](https://inertiajs.com/server-side-setup) adapter.
 
 ### Pages
 
-Let's create a **Welcome Page** on the `resources/js/Pages/Welcome.html` path:
+Let's create a **Welcome Page** on the `resources/js/Pages/Welcome.html` path.
 
 ```html
 <!-- resources/js/Pages/Welcome.html -->
@@ -84,7 +84,7 @@ Let's create a **Welcome Page** on the `resources/js/Pages/Welcome.html` path:
 
 ```
 
-Now, **add a route** that renders the `Welcome.html` page with Inertia:
+Now, **add a route** that renders the `Welcome.html` page with Inertia.
 
 ```php
 <?php
@@ -105,7 +105,7 @@ Done. **You are now rendering plain HTML files with Inertia**.
 
 **Any tag that contains a `[data-inertia-link]` attribute will be considered as a _link_**, and will be redirected to its _href_ when it recieves a click event.
 
-Let's add some links on the previously created `Welcome.html` page:
+Let's add some links on the previously created `Welcome.html` page.
 
 ```html
 <!-- resources/js/Pages/Welcome.html -->
@@ -124,7 +124,7 @@ Let's add some links on the previously created `Welcome.html` page:
 
 ```
 
-Also, create the `About.html` page and add it to the routes file:
+Also, create the `About.html` page and add it to the routes file.
 
 ```html
 <!-- resources/js/Pages/About.html -->
@@ -169,7 +169,7 @@ Route::get('/about', function () {
 
 #### POST Requests
 
-> This example applies also for other HTTP Verbs like PUT, PATCH and DELETE
+> This example applies also for other HTTP Verbs like PUT, PATCH and DELETE.
 
 As an example, let's do a POST request.
 
@@ -238,6 +238,55 @@ It can be used to change the `<title>` and other metatags.
 ```
 
 
+
+### Layouts
+
+> Right now, only 1 layout per view is supported. Nested layouts will come on future versions.
+
+> Check the [Inertia.js Layouts section](https://inertiajs.com/pages).
+
+Inertia.js supports layouts when using frontend libraries like Vue, React and Svelte.
+
+Since Inertia.js HTML Adapter renders plain HTML files, **the layout functionality is handled by the adapter itself**.
+
+Let's create a `Layout.html` file. It should contain a tag with a `data-inertia-slot` attribute, where the child content will be nested.
+
+```html
+<!-- resources/js/Pages/Layout.html -->
+
+<nav>
+    <a data-inertia-link href="/">Welcome</a>
+    <a data-inertia-link href="/about">About</a>
+</nav>
+
+<!-- Right now, only 1 slot is supported -->
+<main data-inertia-slot></main>
+
+<footer>
+    &copy; ACME
+</footer>
+
+<!-- Right now, Layout scripts are not supported -->
+<!-- <script></script> -->
+```
+
+Now, modify the `Welcome.html` to _extend_ the layout with the `data-inertia-extends` attribute.
+
+```html
+<!-- resources/js/Pages/Welcome.html -->
+
+<!-- The content inside the [data-inertia-extends] will be nested on the layout slot -->
+<div data-inertia-extends="Layout">
+    <h1>Welcome</h1>
+    <pre>rendered at <time id="date"></time></pre>
+</div>
+
+<!-- ... -->
+```
+
+You will see the `Welcome.html` content between the `<nav>` and `<footer>` tags from `Layout.html`.
+
+
 ## Examples
 
 Since **Inertia.js HTML Adapter renders plain HTML files**, you can **use _any_ frontend library or framework with it**.
@@ -248,9 +297,9 @@ Since **Inertia.js HTML Adapter renders plain HTML files**, you can **use _any_ 
 
 ### Alpine.js
 
-[Alpine.js](https://alpinejs.dev/) is a lightweight JavaScript framework created by @calebporzio, who also created [Laravel Livewire](https://laravel-livewire.com/)
+[Alpine.js](https://alpinejs.dev/) is a lightweight JavaScript framework created by [Caleb Porzio](https://calebporzio.com/), who also created [Laravel Livewire](https://laravel-livewire.com/).
 
-In order to use it with Inertia, **add the script on the head tag** of `resources/views/app.blade.php`
+In order to use it with Inertia, **add the script on the head tag** of `resources/views/app.blade.php`.
 
 ```html
 <!-- resources/views/app.blade.php -->
@@ -295,7 +344,7 @@ Now, **modify the `Welcome.html` page** to use Alpine.js instead of plain javasc
 
 Old but gold, [jQuery](https://code.jquery.com/) is still an option for those who have not been on the frontend development loop during the last years.
 
-**Add the jQuery script on the head tag** of `resources/views/app.blade.php`
+**Add the jQuery script on the head tag** of `resources/views/app.blade.php`.
 
 ```html
 <!-- resources/views/app.blade.php -->

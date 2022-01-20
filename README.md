@@ -197,6 +197,36 @@ Notice that the "rendered at" date changes when the POST request is sent. This i
 
 Also, check your Laravel logs to assert that the message has been logged.
 
+### Head
+
+> Check the [Inertia.js title & meta section](https://inertiajs.com/title-and-meta#head-component).
+
+The **Inertia HTML Adapter offers a global `Head()` method** that accepts an HTML string that is placed on the `<head>`.
+
+It can be used to change the `<title>` and other metatags.
+
+```html
+<!-- resources/js/Pages/Welcome.html -->
+
+<!-- ... -->
+<h1>Welcome</h1>
+
+<!-- ... -->
+
+<script>
+    /* ... */
+    function Welcome() {
+        /* ... */
+        Head(`
+            <title>Welcome</title>
+            <meta name="description" content="The Welcome page description" />
+        `)
+    }
+</script>
+
+```
+
+
 ## Examples
 
 Since **Inertia.js HTML Adapter renders plain HTML files**, you can **use _any_ frontend library or framework with it**.

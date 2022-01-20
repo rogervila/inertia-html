@@ -2,7 +2,7 @@ import { Inertia } from '@inertiajs/inertia'
 import render from './render'
 import head from './head'
 
-export default ({ target, isServer, props }) => {
+export default async ({ target, isServer, props }) => {
     Inertia.init({
         initialPage: props.initialPage,
         resolveComponent: props.resolveComponent,
@@ -13,7 +13,7 @@ export default ({ target, isServer, props }) => {
                 window.Head = head
             }
 
-            render({ html: component, target })
+            await render({ html: component, target })
 
             if (!window[page.component]) {
                 return

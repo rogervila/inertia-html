@@ -266,8 +266,20 @@ Let's create a `Layout.html` file. It should contain a tag with a `data-inertia-
     &copy; ACME
 </footer>
 
-<!-- Right now, Layout scripts are not supported -->
-<!-- <script></script> -->
+<script>
+    /**
+     * IMPORTANT: When a page runs as a layout,
+     * the JS function with the same name as the
+     * layout page is not automatically called.
+     */
+    function Layout() {
+        console.log(`
+            When using Layout.html
+            as a layout, this function
+            is not called automatically.
+        `)
+    }
+</script>
 ```
 
 Now, modify the `Welcome.html` to _extend_ the layout with the `data-inertia-extends` attribute.
@@ -282,6 +294,20 @@ Now, modify the `Welcome.html` to _extend_ the layout with the `data-inertia-ext
 </div>
 
 <!-- ... -->
+
+<script>
+    /* ... */
+
+    /**
+     * When a page extends from a layout,
+     * The parent page function can be
+     * called manually.
+     */
+    function Welcome() {
+        Layout()
+        /* ... */
+    }
+</script>
 ```
 
 You will see the `Welcome.html` content between the `<nav>` and `<footer>` tags from `Layout.html`.

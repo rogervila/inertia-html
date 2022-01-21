@@ -15,14 +15,16 @@ export default async ({ target, isServer, props }) => {
 
             await render({ html: component, target })
 
-            if (!window[page.component]) {
+            const method = page.component.replaceAll('/', '_')
+
+            if (!window[method]) {
                 return
             }
 
             try {
-                window[page.component]()
+                window[method]()
             } catch (error) {
-                console.error(`window.${page.component}() execution failed!`)
+                console.error(`window.${method}() execution failed!`)
                 console.error({ error })
             }
         }

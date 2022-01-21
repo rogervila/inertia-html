@@ -1,13 +1,16 @@
 import link from './link'
+import layout from './layout'
 
-export default ({ html, target }) => {
+export default async ({ html, target }) => {
     let div = document.createElement('div')
     div.dataset.inertia = ''
-    div.innerHTML = html
+    div.innerHTML = await layout(html)
 
     // Recreate script tags to make sure they are evaluated
     div.querySelectorAll('script').forEach(script => {
-        div.removeChild(script)
+        let parent = script.parentNode
+        parent.removeChild(script)
+
         let newScript = document.createElement('script')
 
         for (let key of script.attributes) {
@@ -16,7 +19,7 @@ export default ({ html, target }) => {
 
         newScript.innerHTML = script.innerHTML
 
-        div.appendChild(newScript)
+        parent.appendChild(newScript)
     })
 
     let child = target.querySelector('[data-inertia]')

@@ -101,6 +101,50 @@ Route::get('/', function () {
 
 Done. **You are now rendering plain HTML files with Inertia**.
 
+#### Subfolders
+
+Inertia pages can be placed on subfolders for a better code organization.
+
+When placing a **page on a subfolder, "/" characters should be replaced with "_" on the main page function**.
+
+```php
+<?php
+
+/* routes/web.php */
+
+/* ... */
+
+Route::get('/users', function () {
+    return Inertia::render('User/Index');
+});
+```
+
+```html
+<!-- resources/js/Pages/User/Index.html -->
+
+<!-- ... -->
+
+<h1>Users</h1>
+
+<!-- ... -->
+
+<pre>rendered at <time id="date"></time></pre>
+
+<script>
+    /* ... */
+
+    /**
+     * "User/Index" is converted to
+     * "User_Index" since "/" is not
+     * a valid function name character.
+     */
+    function User_Index() {
+        console.log({Inertia})
+        document.getElementById('date').innerText = new Date().toTimeString()
+    }
+</script>
+```
+
 ### Links
 
 **Any tag that contains a `[data-inertia-link]` attribute will be considered as a _link_**, and will be redirected to its _href_ when it recieves a click event.
